@@ -3,7 +3,7 @@
 
     // Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/ServiceWorkers/sw.js').catch(function (error) {
+        navigator.serviceWorker.register('/msc/ServiceWorkers/sw.js').catch(function (error) {
             // registration failed
             console.log('Registration failed with ' + error);
         });
