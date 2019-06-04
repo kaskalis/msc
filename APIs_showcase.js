@@ -154,9 +154,7 @@ document.getElementById('streamCapture').addEventListener('click', function () {
         v.pause();
         this.value = 'stop';
     } else {
-        navigator.getUserMedia = navigator.getUserMedia || 
-                                 navigator.webkitGetUserMedia || 
-                                 navigator.mozGetUserMedia;
+        navigator.getUserMedia = navigator.getUserMedia || navigator.mediaDevices.getUserMedia;
         window.URL = window.URL || window.webkitURL;
         if (navigator.getUserMedia) {
             navigator.getUserMedia(
