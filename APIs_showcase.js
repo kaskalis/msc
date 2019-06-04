@@ -163,9 +163,12 @@ document.getElementById('streamCapture').addEventListener('click', function () {
                     audio:false
                 }
             ).then(function (stream) {
-                    v.src = window.URL.createObjectURL(stream);
+                v.srcObject = stream;
+                video.addEventListener('loadedmetadata', function (e) {
+                    v.play();
                     that.innerHTML = 'Παύση (pause)';
                     that.value = 'play';
+                });
             }).catch(function (error) {
 // Inform user
             });
