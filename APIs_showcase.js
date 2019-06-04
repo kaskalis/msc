@@ -154,23 +154,23 @@ document.getElementById('streamCapture').addEventListener('click', function () {
         v.pause();
         this.value = 'stop';
     } else {
-        navigator.getUserMedia = navigator.getUserMedia || navigator.mediaDevices.getUserMedia;
         window.URL = window.URL || window.webkitURL;
-        if (navigator.getUserMedia) {
-            navigator.getUserMedia(
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia(
                 {
-                    video:true,
-                    audio:false
+                    audio: false,
+                    video: true
                 }
             ).then(function (stream) {
                 v.srcObject = stream;
-                video.addEventListener('loadedmetadata', function (e) {
+                v.addEventListener('loadedmetadata', function (e) {
                     v.play();
                     that.innerHTML = 'Παύση (pause)';
                     that.value = 'play';
                 });
-            }).catch(function (error) {
-// Inform user
+            }).catch(function (err) {
+                // Inform user
+                console.log(err.name + ": " + err.message);
             });
         }
     }
