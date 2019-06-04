@@ -159,7 +159,7 @@ document.getElementById('streamCapture').addEventListener('click', function () {
             navigator.mediaDevices.getUserMedia(
                 {
                     audio: false,
-                    video: true
+                    video: { facingMode: { exact: "environment" } }
                 }
             ).then(function (stream) {
                 v.srcObject = stream;
