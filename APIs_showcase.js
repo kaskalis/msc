@@ -161,16 +161,14 @@ document.getElementById('streamCapture').addEventListener('click', function () {
                 {
                     video:true,
                     audio:false
-                },        
-                function (stream) {
+                }
+            ).then(function (stream) {
                     v.src = window.URL.createObjectURL(stream);
                     that.innerHTML = 'Παύση (pause)';
                     that.value = 'play';
-                },
-                function (error) {
+            }).catch(function (error) {
 // Inform user
-                }
-            );
+            });
         }
     }
 });
