@@ -131,17 +131,6 @@ document.getElementById('orientation').addEventListener('click', function () {
 
 // ------------------------- //
 
-document.getElementById('battery').addEventListener('click', function () {
-    if ( navigator.getBattery ) {
-        navigator.getBattery().then(function (battery) {
-            document.getElementById('charging').innerHTML = battery.charging ? 'Ναι' : 'Όχι';
-            document.getElementById('level').innerHTML = battery.level * 100;
-        });
-    }
-});
-
-// ------------------------- //
-
 document.getElementById('streamCapture').addEventListener('click', function () {
     var v = document.getElementById('getUserMedia'), that = this;
 
@@ -173,42 +162,5 @@ document.getElementById('streamCapture').addEventListener('click', function () {
                 console.log(err.name + ": " + err.message);
             });
         }
-    }
-});
-
-// ------------------------- //
-
-function myUserProximityData(ev) {
-    document.getElementById('near').innerHTML = ev.near;
-}
-function myDeviceProximityData(ev) {
-    ['value', 'min', 'max'].forEach(function (item) {
-        document.getElementById(item).innerHTML = ev[item];
-    });
-}
-document.getElementById('proximity').addEventListener('click', function () {
-    if ( this.innerHTML == 'Έναρξη ανάγνωσης' ) {
-        this.innerHTML = 'Λήξη ανάγνωσης';
-        window.addEventListener('userproximity', myUserProximityData);
-        window.addEventListener('deviceproximity', myDeviceProximityData);
-    } else {
-        this.innerHTML = 'Έναρξη ανάγνωσης';
-        window.removeEventListener('userproximity', myUserProximityData);
-        window.removeEventListener('deviceproximity', myDeviceProximityData);
-    }
-});
-
-// ------------------------- //
-
-function myAmbientLightData(ev) {
-    document.getElementById('ambientValue').innerHTML = ev.value;
-}
-document.getElementById('ambient').addEventListener('click', function () {
-    if ( this.innerHTML == 'Έναρξη ανάγνωσης' ) {
-        this.innerHTML = 'Λήξη ανάγνωσης';
-        window.addEventListener('devicelight', myAmbientLightData);
-    } else {
-        this.innerHTML = 'Έναρξη ανάγνωσης';
-        window.removeEventListener('devicelight', myAmbientLightData);
     }
 });
